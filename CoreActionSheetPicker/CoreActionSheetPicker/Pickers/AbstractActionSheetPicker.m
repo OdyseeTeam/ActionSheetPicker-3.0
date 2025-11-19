@@ -501,6 +501,9 @@ CG_INLINE BOOL isIPhone4() {
 
 - (UIToolbar *)createPickerToolbarWithTitle:(NSString *)title {
     CGRect frame = CGRectMake(0, 0, self.viewSize.width, 44);
+    if (@available(iOS 26.0, *)) {
+        frame.origin.y = 10;
+    }
     UIToolbar *pickerToolbar = [[UIToolbar alloc] initWithFrame:frame];
     pickerToolbar.barStyle = UIBarStyleDefault;
 
@@ -592,6 +595,9 @@ CG_INLINE BOOL isIPhone4() {
     }
 
     UIBarButtonItem *buttonLabel = [[UIBarButtonItem alloc] initWithCustomView:toolBarItemLabel];
+    if (@available(iOS 26.0, *)) {
+        buttonLabel.hidesSharedBackground = YES;
+    }
     return buttonLabel;
 }
 
